@@ -1,0 +1,1 @@
+add_library(minecraft::anvil ALIAS anvil_cpp)
