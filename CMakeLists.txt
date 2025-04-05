@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.18)
-project(anvil_cpp CXX)
+project(anvil CXX)
 
 set(CXX_STANDARD 21)
 set(CMAKE_BUILD_TYPE Release)
@@ -14,9 +14,6 @@ find_package(solis REQUIRED)
 # =============================================================================
 # Setup library
 # =============================================================================
-file(GLOB_RECURSE lib_src LIST_DIRECTORIES false "src/**.cpp")
-add_library(${PROJECT_NAME} SHARED ${lib_src})
-target_include_directories(${PROJECT_NAME} PUBLIC "include")
-target_link_libraries(${PROJECT_NAME} solis::core)
+solis_library(anvil DIRECTORY "src" DEPENDS solis::worlds)
 
-export_config()
+solis_package(NAMESPACE minecraft::)
